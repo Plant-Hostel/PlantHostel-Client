@@ -9,7 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        "Brand-Main-Color": "#073A29",
+        BackGround: "#F1F3F5",
+        BrandMain: "#073A29",
+        BrandSub: "#D7B26D",
+        BrandSub2: "#754B42",
       },
     },
   },
