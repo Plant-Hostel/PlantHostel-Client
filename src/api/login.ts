@@ -1,25 +1,24 @@
+import axios from "axios";
+
 export const handleLogin = async (userId: string, password: string) => {
   try {
-    const response = await fetch(
+    const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_SERVER_URL}/auth/login`,
       {
-        method: "POST",
-        credentials: "include",
+        userId,
+        password,
+      },
+      {
+        withCredentials: true, // 쿠키 포함
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId,
-          password,
-        }),
       }
     );
-    if (!response.ok) {
-      throw new Error(`Login failed with status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
+
+    return response.data; // JSON 데이터를 반환
   } catch (err) {
-    console.error("err", err);
+    console.error("Login error:", err);
+    throw err; // 필요하면 에러를 다시 던져 호출자에서 처리
   }
 };
