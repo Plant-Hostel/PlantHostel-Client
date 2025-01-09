@@ -9,31 +9,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          BackGround: "#F1F3F5",
-          BrandMain: "#073A29",
-          BrandSub: "#D7B26D",
-          BrandSub2: "#754B42",
-        },
-        font: {
-          MainText: "#111111",
-          SubText01: "#505050",
-          SubText02: "#767676",
-          DisabledText: "#999999",
-        },
-        system: {
-          BackGround: "#F1F3F5",
-          Warning: "#B71C1C",
-          Etc: "#004DE3",
-          Palette01: "#12372A",
-          Palette02: "#436850",
-          Palette03: "#ADBC9F",
-          Palette04: "#D7B26D",
-          Palette05: "#ECD79B",
-          Palette06: "#DBD3D1",
-          Palette07: "#A97D5E",
-          Palette08: "#754B42",
-        },
+        default: "#111111",
+        sub01: "#555555",
+        sub02: "#767676",
+        disabled: "#999999",
+        white: "#FFFFFF",
+        primary: "#12372A",
+        secondary01: "#D7B26D",
+        secondary02: "#754B42",
+        secondary03: "#DBD3D1",
+        warning: "#B71C1C",
       },
     },
     fontFamily: {

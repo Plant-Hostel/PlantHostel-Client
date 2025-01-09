@@ -4,6 +4,9 @@ import { handleLogin } from "@/api/login";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import CommonButton from "../common/CommonButton";
+import CommonInput from "../common/CommonInput";
+import Show from "@/images/Show.svg";
 
 interface FormValues {
   userId: string;
@@ -18,7 +21,7 @@ export default function LoginForm() {
   const onSubmit = async (data: FormValues) => {
     const result = await handleLogin(data.userId, data.password);
     console.log("result", result);
-    if (result.message === "로그인 성공") {
+    if (result.status === 200) {
       router.push("/");
     } else {
       alert("Login failed: " + result.message);
@@ -29,6 +32,7 @@ export default function LoginForm() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="userId">ID</label>
+        <CommonInput icon={<Show />} />
         <input
           id="userId"
           {...register("userId", {
@@ -48,7 +52,7 @@ export default function LoginForm() {
           })}
           type="password"
         />
-        <button type="submit">SUBMIT</button>
+        <CommonButton type="submit">로그인</CommonButton>
       </form>
     </div>
   );
