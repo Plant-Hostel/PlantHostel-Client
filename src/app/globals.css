@@ -16,4 +16,15 @@ body {
   margin: 0 auto;
   background-color: var(--background);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-family: "Pretendard-Semibold";
+}
+
+@font-face {
+  font-family: "Pretendard-Semibold";
+  src: url("../fonts/Pretendard-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("../fonts/Pretendard-Regular.otf") format("opentype");
 }

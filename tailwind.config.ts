@@ -36,6 +36,10 @@ export default {
         },
       },
     },
+    fontFamily: {
+      PretendardSemibold: ["Pretendard-Semibold"],
+      PretendardRegular: ["Pretendard-Regular"],
+    },
   },
   plugins: [],
 } satisfies Config;
