@@ -11,7 +11,7 @@ interface FormValues {
 }
 
 export default function LoginForm() {
-  const router = useRouter(); // useRouter 초기화
+  const router = useRouter();
 
   const { register, handleSubmit } = useForm<FormValues>();
 
