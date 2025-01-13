@@ -31,26 +31,19 @@ export default function LoginForm() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="userId">ID</label>
-        <CommonInput icon={<Show />} />
-        <input
+        <CommonInput
           id="userId"
-          {...register("userId", {
-            required: "required",
-          })}
-          type="text"
+          label="아이디"
+          placeholder="아이디를 입력해주세요"
+          {...register("userId", { required: "ID is required" })}
         />
-        <label htmlFor="password">PASSWORD</label>
-        <input
+        <CommonInput
           id="password"
-          {...register("password", {
-            required: "required",
-            minLength: {
-              value: 5,
-              message: "min length is 5",
-            },
-          })}
+          label="비밀번호"
           type="password"
+          placeholder="비밀번호를 입력해주세요"
+          {...register("password")}
+          icon={<Show />}
         />
         <CommonButton type="submit">로그인</CommonButton>
       </form>
