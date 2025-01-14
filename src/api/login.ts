@@ -16,9 +16,23 @@ export const handleLogin = async (userId: string, password: string) => {
       }
     );
 
-    return response.data; // JSON 데이터를 반환
-  } catch (err) {
-    console.error("Login error:", err);
-    throw err; // 필요하면 에러를 다시 던져 호출자에서 처리
+    return response.data;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    if (err.response) {
+      const status = err.response.status;
+      if (status === 401) {
+        return {
+          success: false,
+          message: "아이디 또는 비밀번호를 확인해주세요.",
+        };
+      }
+      if (status === 500) {
+        return {
+          success: false,
+          message: "서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.",
+        };
+      }
+    }
   }
 };

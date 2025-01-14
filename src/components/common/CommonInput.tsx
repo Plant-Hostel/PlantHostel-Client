@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React, { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 
 const InputVariants = cva(
-  "relative w-[350px] py-[17px] px-[16px] rounded-[6px] pr-12 border focus:outline-none flex items-center",
+  "relative w-[350px] h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 border focus:outline-none flex items-center",
   {
     variants: {
       color: {
@@ -28,6 +28,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
   color?: "primary" | "default" | "warning" | "blank";
   icon?: ReactNode;
+  className?: string;
 }
 
 const CommonInput = forwardRef<HTMLInputElement, InputProps>(
@@ -40,19 +41,20 @@ const CommonInput = forwardRef<HTMLInputElement, InputProps>(
       errorMessage,
       color,
       icon,
+      className,
       ...props
     },
     ref
   ) => {
     return (
-      <div className="flex flex-col gap-1 mb-5">
-        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+      <div className="flex flex-col gap-1">
+        <label htmlFor={id} className="font-PretendardSemibold">
           {label}
         </label>
         <div className="relative">
           <input
             id={id}
-            className={cn(InputVariants({ color }))}
+            className={cn(InputVariants({ color, className }))}
             ref={ref}
             type={type}
             placeholder={placeholder}
