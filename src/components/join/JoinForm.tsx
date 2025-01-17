@@ -5,6 +5,8 @@ import { Member } from "@/types/member";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import CommonInput from "../common/CommonInput";
+import CommonButton from "../common/CommonButton";
 
 export default function JoinForm() {
   const router = useRouter();
@@ -23,124 +25,84 @@ export default function JoinForm() {
 
   return (
     <div>
+      <div></div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="userId">ID</label>
-        <input
-          id="userId"
-          {...register("userId", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="password">PASSWORD</label>
-        <input
-          id="password	"
-          {...register("password", {
-            required: "required",
-            minLength: {
-              value: 5,
-              message: "min length is 5",
-            },
-          })}
-          type="password"
-        />
-        <label htmlFor="passwordCheck">passwordCheck</label>
-        <input
-          id="passwordCheck"
-          {...register("passwordCheck", {
-            required: "required",
-          })}
-          type="password"
-        />
-        <label htmlFor="name">name</label>
-        <input
-          id="name"
-          {...register("name", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="nickname">nickname</label>
-        <input
-          id="nickname"
-          {...register("nickname", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="hp">hp</label>
-        <input
-          id="hp"
-          {...register("hp", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="email">email</label>
-        <input
-          id="email"
-          {...register("email", {
-            required: "required",
-          })}
-          type="email"
-        />
-        <label htmlFor="zipcode">zipcode</label>
-        <input
-          id="zipcode"
-          {...register("zipcode", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="address">address</label>
-        <input
-          id="address"
-          {...register("address", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="addressDetail">addressDetail</label>
-        <input
-          id="addressDetail"
-          {...register("addressDetail", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="residenceType">residenceType</label>
-        <input
-          id="residenceType"
-          {...register("residenceType", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="gender">gender</label>
-        <input
-          id="gender"
-          {...register("gender", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="favoritePlant">favoritePlant</label>
-        <input
-          id="favoritePlant"
-          {...register("favoritePlant", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <label htmlFor="intro">intro</label>
-        <input
-          id="intro"
-          {...register("intro", {
-            required: "required",
-          })}
-          type="text"
-        />
-        <button type="submit">회원가입</button>
+        <div className="flex flex-col gap-5 mb-[14px]">
+          <div className="flex items-end gap-2">
+            <CommonInput
+              id="userId"
+              label="아이디"
+              placeholder="아이디를 입력해주세요"
+              {...register("userId", { required: "ID is required" })}
+              inputSize="smallButton"
+            />
+            <CommonButton size="small" onClick={() => console.log("중복확인")}>
+              중복확인
+            </CommonButton>
+          </div>
+
+          <CommonInput
+            id="password"
+            label="비밀번호"
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            {...register("password", { required: "PASSWORD is required" })}
+          />
+          <CommonInput
+            id="passwordCheck"
+            label="비밀번호 확인"
+            type="password"
+            placeholder="비밀번호를 한 번 더 입력해주세요"
+            {...register("passwordCheck", {
+              required: "passwordCheck is required",
+            })}
+          />
+          <CommonInput
+            id="nickname"
+            label="닉네임"
+            placeholder="닉네임을 입력해주세요"
+            {...register("nickname", { required: "nickname is required" })}
+          />
+          <div className="flex items-end gap-2">
+            <CommonInput
+              id="hp"
+              label="전화번호"
+              placeholder="-제외 11자리를 입력해주세요"
+              {...register("hp", { required: "hp is required" })}
+            />
+            <CommonButton size="small">인증번호</CommonButton>
+          </div>
+
+          <CommonInput
+            id="email"
+            label="이메일"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            {...register("email", { required: "email is required" })}
+          />
+          <div className="flex items-end gap-2">
+            <CommonInput
+              id="zipcode"
+              label="우편번호"
+              placeholder="우편번호를 입력해주세요"
+              {...register("zipcode", { required: "zipcode is required" })}
+            />
+            <CommonButton size="small">찾기</CommonButton>
+          </div>
+          <CommonInput
+            id="address"
+            placeholder="주소를 입력해주세요"
+            {...register("address", { required: "address is required" })}
+          />
+          <CommonInput
+            id="addressDetail"
+            placeholder="상세주소를 입력해주세요"
+            {...register("addressDetail", {
+              required: "addressDetail is required",
+            })}
+          />
+        </div>
+        <CommonButton type="submit">회원가입</CommonButton>
       </form>
     </div>
   );

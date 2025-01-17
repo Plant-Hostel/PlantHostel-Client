@@ -3,9 +3,13 @@ import { cva } from "class-variance-authority";
 import React, { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 
 const InputVariants = cva(
-  "relative w-[350px] h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 border focus:outline-none flex items-center",
+  "relative  h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 placeholder-sub02 border focus:outline-none flex items-center",
   {
     variants: {
+      inputSize: {
+        full: "w-full",
+        smallButton: "w-[268px]", //small Button이랑 같이쓰이는 input
+      },
       color: {
         default: "border-#DEE3E1",
         blank: "border-#DEE3E1 text-sub02",
@@ -14,6 +18,7 @@ const InputVariants = cva(
       },
     },
     defaultVariants: {
+      inputSize: "full",
       color: "default",
     },
   }
@@ -21,11 +26,12 @@ const InputVariants = cva(
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
-  label: string;
+  label?: string;
   type?: "text" | "password" | "email";
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: string;
+  inputSize?: "full" | "smallButton";
   color?: "primary" | "default" | "warning" | "blank";
   icon?: ReactNode;
   className?: string;
@@ -39,6 +45,7 @@ const CommonInput = forwardRef<HTMLInputElement, InputProps>(
       type = "text",
       placeholder = "",
       errorMessage,
+      inputSize,
       color,
       icon,
       className,
@@ -54,7 +61,7 @@ const CommonInput = forwardRef<HTMLInputElement, InputProps>(
         <div className="relative">
           <input
             id={id}
-            className={cn(InputVariants({ color, className }))}
+            className={cn(InputVariants({ inputSize, color, className }))}
             ref={ref}
             type={type}
             placeholder={placeholder}
