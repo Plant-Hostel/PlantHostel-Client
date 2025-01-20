@@ -1,4 +1,4 @@
-export interface Member {
+export type Member = {
   userId: string;
   password: string;
   passwordCheck: string;
@@ -8,4 +8,4 @@ export interface Member {
   zipcode: string;
   address: string;
   addressDetail: string;
-}
+};
