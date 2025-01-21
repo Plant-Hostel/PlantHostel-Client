@@ -1,6 +1,7 @@
 import { Member } from "@/types/member";
 import axios from "axios";
 
+//회원가입
 export const handleJoin = async (memberData: Member) => {
   try {
     const response = await axios.post(
@@ -13,7 +14,7 @@ export const handleJoin = async (memberData: Member) => {
         },
       }
     );
-    return response.data; // JSON 데이터를 반환
+    return response.data;
   } catch (err) {
     console.error("err", err);
   }

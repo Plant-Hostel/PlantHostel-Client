@@ -1,6 +1,6 @@
 "use client";
 
-import { handleJoin } from "@/api/join";
+import { handleJoin } from "@/api/member/join";
 import { Member } from "@/types/member";
 import { useRouter } from "next/navigation";
 import React from "react";

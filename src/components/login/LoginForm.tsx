@@ -1,6 +1,6 @@
 "use client";
 
-import { handleLogin } from "@/api/login";
+import { handleLogin } from "@/api/auth/login";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";

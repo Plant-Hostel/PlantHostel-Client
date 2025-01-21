@@ -10,7 +10,7 @@ type TabItem = {
 
 type TabsProps = {
   tabs: TabItem[];
-  defaultActiveIndex?: number;
+  defaultActiveIndex?: number; //default 활성화 탭
 };
 
 export default function CommonTab({ tabs, defaultActiveIndex = 0 }: TabsProps) {
@@ -28,8 +28,8 @@ export default function CommonTab({ tabs, defaultActiveIndex = 0 }: TabsProps) {
             className={clsx(
               `flex-1 text-center w-[175px] h-[52px] border-b-[2px] border-b-primary`,
               activeTab === index
-                ? "bg-primary text-white"
-                : "bg-inherit text-black"
+                ? "bg-primary text-white" //활성화
+                : "bg-inherit text-black" //비활성화
             )}
           >
             {tab.label}
