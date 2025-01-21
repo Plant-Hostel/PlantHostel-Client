@@ -6,12 +6,8 @@ import React from "react";
 export default function page() {
   // 아이디 비밀번호찾기 탭
   const tabs = [
-    { label: "아이디", content: <FindId /> },
-    { label: "비밀번호", content: <FindPwd /> },
+    { label: "아이디", content: <FindId /> }, //아이디 찾기
+    { label: "비밀번호", content: <FindPwd /> }, //비밀번호 찾기
   ];
-  return (
-    <div>
-      <CommonTab tabs={tabs} />
-    </div>
-  );
+  return <CommonTab tabs={tabs} className="mb-3" />;
 }

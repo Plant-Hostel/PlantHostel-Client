@@ -8,6 +8,7 @@
 
 html {
   background-color: white;
+  height: 100%;
 }
 
 body {
@@ -15,8 +16,7 @@ body {
   padding: 0 20px 8px 20px;
   margin: 0 auto;
   background-color: var(--background);
-  height: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   font-family: "Pretendard-Regular";
 }
 

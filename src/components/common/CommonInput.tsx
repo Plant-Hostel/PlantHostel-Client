@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React, { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 
 const InputVariants = cva(
-  "relative  h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 placeholder-sub02 border focus:outline-none flex items-center",
+  "relative  h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 placeholder-sub02 border focus:outline-none flex items-center text-[15px]",
   {
     variants: {
       inputSize: {
