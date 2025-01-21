@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import CommonCheckbox from "../common/CommonCheckbox";
-import MethodPhone from "./MethodPhone";
-import MethodEmail from "./MethodEmail";
+import CommonCheckbox from "../../common/CommonCheckbox";
+import MethodPhone from "./common/MethodPhone";
+import MethodEmail from "./common/MethodEmail";
 
 export default function FindId() {
   const [findMethod, setFindMethod] = useState<string>("phone");

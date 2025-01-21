@@ -1,6 +1,6 @@
 import CommonTab from "@/components/common/CommonTab";
-import FindId from "@/components/member/FindId";
-import FindPwd from "@/components/member/FindPwd";
+import FindId from "@/components/member/find-account/FindId";
+import FindPwd from "@/components/member/find-account/FindPwd";
 import React from "react";
 
 export default function page() {

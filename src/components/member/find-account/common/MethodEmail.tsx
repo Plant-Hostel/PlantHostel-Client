@@ -1,28 +1,29 @@
 import React from "react";
-import CommonInput from "../common/CommonInput";
-import CommonButton from "../common/CommonButton";
+import CommonInput from "../../../common/CommonInput";
+import CommonButton from "../../../common/CommonButton";
 
 //휴대폰으로 찾기
-export default function MethodPhone({ type }: { type: "id" | "pwd" }) {
+export default function MethodEmail({ type }: { type: "id" | "pwd" }) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col">
-        <span className="font-PretendardSemibold">
-          등록된 휴대번화 번호로 찾기
-        </span>
+        <span className="font-PretendardSemibold">이메일로 찾기</span>
         <span className="text-[14px]">
-          가입 당시 입력한 휴대전화 번호를 통해 인증해주세요
+          가입 당시 입력한 이메일을 통해 인증해주세요
         </span>
       </div>
-      {type === "pwd" && (
+
+      {type === "pwd" ? ( //비밀번호 찾기일때만 아이디 입력
         <CommonInput id="id" placeholder="아이디를 입력해주세요" />
+      ) : (
+        ""
       )}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 flex-grow">
         <div className="flex items-end gap-2">
           <CommonInput
-            label="전화번호"
+            label="이메일"
             id="hp"
-            placeholder="- 제외 11자리를 입력해주세요"
+            placeholder="이메일을 입력해주세요"
             inputSize="smallButton"
           />
           <CommonButton>인증요청</CommonButton>
