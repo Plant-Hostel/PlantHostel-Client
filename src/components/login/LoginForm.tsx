@@ -21,7 +21,11 @@ interface FormValues {
 export default function LoginForm() {
   const router = useRouter();
 
-  const { register, handleSubmit } = useForm<FormValues>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   const [saveId, setSaveId] = useState(false);
 
@@ -44,20 +48,41 @@ export default function LoginForm() {
       >
         <div>
           <div className="flex flex-col gap-5 mb-[14px]">
-            <CommonInput
-              id="userId"
-              label="아이디"
-              placeholder="아이디를 입력해주세요"
-              {...register("userId", { required: "ID is required" })}
-            />
-            <CommonInput
-              id="password"
-              label="비밀번호"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-              {...register("password", { required: "PASSWORD is required" })}
-              icon={<Show />}
-            />
+            <div>
+              <CommonInput
+                id="userId"
+                label="아이디"
+                placeholder="아이디를 입력해주세요"
+                {...register("userId", { required: "ID is required" })}
+              />
+              {errors.userId && (
+                <p className="text-warning text-sm">{errors.userId.message}</p>
+              )}
+            </div>
+            <div>
+              <CommonInput
+                id="password"
+                label="비밀번호"
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+                {...register("password", { required: "PASSWORD is required" })}
+                icon={
+                  <button
+                    className="flex justify-center items-center"
+                    onClick={() => {
+                      console.log("비밀번호 감추기"); //추후에 구현
+                    }}
+                  >
+                    <Show />
+                  </button>
+                }
+              />
+              {errors.password && (
+                <p className="text-warning text-sm">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between px-1">
             <CommonCheckbox
