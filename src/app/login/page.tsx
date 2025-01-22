@@ -5,7 +5,9 @@ import LoginForm from "@/components/login/LoginForm";
 export default function Page() {
   return (
     <div className="flex flex-col justify-center items-center gap-5">
-      <Logo />
+      <div className="h-[150px] flex items-center">
+        <Logo />
+      </div>
       <LoginForm />
     </div>
   );
