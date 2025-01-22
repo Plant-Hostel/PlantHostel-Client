@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React, { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 
 const InputVariants = cva(
-  "relative  h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 placeholder-sub02 border focus:outline-none flex items-center text-[15px]",
+  "relative bg-whiteTransparent  h-[52px] py-[17px] px-[16px] rounded-[6px] pr-12 placeholder-sub02 border focus:outline-none flex items-center text-[15px]",
   {
     variants: {
       inputSize: {
@@ -12,7 +12,7 @@ const InputVariants = cva(
       },
       color: {
         default: "border-#DEE3E1",
-        blank: "border-#DEE3E1 text-sub02",
+        blank: "border-#DEE3E1 text-sub02 ",
         primary: "border-primary",
         warning: "border-warning text-warning",
       },

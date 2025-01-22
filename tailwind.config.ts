@@ -28,6 +28,7 @@ export default {
         pal07: "#A97D5E",
         pal08: "#754B42",
         stroke: "#DEE3E1",
+        whiteTransparent: "rgba(255, 255, 255, 0.15)",
       },
     },
     fontFamily: {
