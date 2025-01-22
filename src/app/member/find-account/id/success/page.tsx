@@ -1,9 +1,9 @@
 import CommonButton from "@/components/common/CommonButton";
 import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
-    <div className="flex flex-col flex-1 justify-between items-center w-full">
+    <div className="flex flex-col flex-1 justify-between items-center">
       <div className="flex flex-col gap-6 items-center mt-6">
         <div className="flex flex-col items-center">
           <span>
