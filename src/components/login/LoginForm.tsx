@@ -2,7 +2,7 @@
 
 import { handleLogin } from "@/api/auth/login";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import CommonButton from "../common/CommonButton";
 import CommonInput from "../common/CommonInput";
@@ -22,6 +22,10 @@ export default function LoginForm() {
   const router = useRouter();
 
   const { register, handleSubmit } = useForm<FormValues>();
+
+  const [saveId, setSaveId] = useState(false);
+
+  console.log("saveId", saveId);
 
   const onSubmit = async (data: FormValues) => {
     const result = await handleLogin(data.userId, data.password);
@@ -56,7 +60,14 @@ export default function LoginForm() {
             />
           </div>
           <div className="flex justify-between px-1">
-            <CommonCheckbox id="saveId" label="아이디 저장" />
+            <CommonCheckbox
+              type="checkbox"
+              id="saveId"
+              label="아이디 저장"
+              onChange={(e) => {
+                setSaveId(e.target.checked);
+              }}
+            />
             <Link href={"/"}>아이디/비밀번호 &gt;</Link>
           </div>
         </div>

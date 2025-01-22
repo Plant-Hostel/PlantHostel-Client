@@ -11,9 +11,14 @@ type TabItem = {
 type TabsProps = {
   tabs: TabItem[];
   defaultActiveIndex?: number; //default 활성화 탭
+  className?: string;
 };
 
-export default function CommonTab({ tabs, defaultActiveIndex = 0 }: TabsProps) {
+export default function CommonTab({
+  tabs,
+  defaultActiveIndex = 0,
+  className,
+}: TabsProps) {
   const [activeTab, setActiveTab] = useState(defaultActiveIndex);
   const handleTabClick = (index: number) => {
     setActiveTab(index);
@@ -29,14 +34,15 @@ export default function CommonTab({ tabs, defaultActiveIndex = 0 }: TabsProps) {
               `flex-1 text-center w-[175px] h-[52px] border-b-[2px] border-b-primary`,
               activeTab === index
                 ? "bg-primary text-white" //활성화
-                : "bg-inherit text-black" //비활성화
+                : "bg-inherit text-black", //비활성화
+              className
             )}
           >
             {tab.label}
           </button>
         ))}
       </div>
-      <div>{tabs[activeTab]?.content}</div>
+      {tabs[activeTab]?.content}
     </div>
   );
 }
