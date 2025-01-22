@@ -1,39 +1,33 @@
-import axios from "axios";
-
 //로그인
 export const handleLogin = async (userId: string, password: string) => {
   try {
-    const response = await axios.post(
+    const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_SERVER_URL}/auth/login`,
       {
-        userId,
-        password,
-      },
-      {
-        withCredentials: true, // 쿠키 포함
+        method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          userId,
+          password,
+        }),
       }
     );
-
-    return response.data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (err: any) {
-    if (err.response) {
-      const status = err.response.status;
-      if (status === 401) {
-        return {
-          success: false,
-          message: "아이디 또는 비밀번호를 확인해주세요.",
-        };
-      }
-      if (status === 500) {
-        return {
-          success: false,
-          message: "서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.",
-        };
+    if (!response.ok) {
+      switch (response.status) {
+        case 401:
+          alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+        default:
+          throw new Error(
+            `알 수 없는 오류가 발생했습니다. 상태 코드: ${response.status}`
+          );
       }
     }
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
   }
 };

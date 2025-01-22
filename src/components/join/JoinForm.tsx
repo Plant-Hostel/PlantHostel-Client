@@ -17,6 +17,7 @@ export default function JoinForm() {
     const result = await handleJoin(data);
     console.log("result", result);
     if (result.status === 200) {
+      alert("회원가입에 성공하였습니다! ");
       router.push("/login");
     } else {
       alert("join failed: " + result.message);
