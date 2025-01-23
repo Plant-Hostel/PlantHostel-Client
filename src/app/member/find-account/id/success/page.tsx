@@ -1,7 +1,12 @@
+"use client";
+
 import CommonButton from "@/components/common/CommonButton";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Page() {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col flex-1 justify-between items-center">
       <div className="flex flex-col gap-6 items-center mt-6">
@@ -14,7 +19,13 @@ export default function Page() {
         </div>
         <span className="text-[14px]">가입일:2024. 10. 11</span>
       </div>
-      <CommonButton>로그인</CommonButton>
+      <CommonButton
+        onClick={() => {
+          router.push("/login");
+        }}
+      >
+        로그인
+      </CommonButton>
     </div>
   );
 }
