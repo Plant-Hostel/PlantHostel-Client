@@ -94,7 +94,7 @@ export default function LoginForm() {
                 setSaveId(e.target.checked);
               }}
             />
-            <Link href={"/"}>아이디/비밀번호 &gt;</Link>
+            <Link href={"/member/find-account"}>아이디/비밀번호 &gt;</Link>
           </div>
         </div>
         <div className="flex flex-col gap-2 py-6">

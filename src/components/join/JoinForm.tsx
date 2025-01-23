@@ -103,7 +103,7 @@ export default function JoinForm() {
             })}
           />
         </div>
-        <CommonButton type="submit">회원가입</CommonButton>
+        <CommonButton type="submit">다음으로</CommonButton>
       </form>
     </div>
   );
