@@ -1,19 +1,26 @@
 "use client";
 
 import { handleJoin } from "@/api/member/join";
-import { Member } from "@/types/member";
+import { MemberSchema, MemberSchemaType } from "@/types/member";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import CommonInput from "../common/CommonInput";
 import CommonButton from "../common/CommonButton";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function JoinForm() {
   const router = useRouter();
 
-  const { register, handleSubmit } = useForm<Member>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<MemberSchemaType>({
+    resolver: zodResolver(MemberSchema),
+  });
 
-  const onSubmit = async (data: Member) => {
+  const onSubmit = async (data: MemberSchemaType) => {
     const result = await handleJoin(data);
     console.log("result", result);
     if (result.status === 200) {
@@ -26,82 +33,161 @@ export default function JoinForm() {
 
   return (
     <div>
-      <div></div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-5 mb-[14px]">
-          <div className="flex items-end gap-2">
-            <CommonInput
-              id="userId"
-              label="아이디"
-              placeholder="아이디를 입력해주세요"
-              {...register("userId", { required: "ID is required" })}
-              inputSize="smallButton"
-            />
-            <CommonButton size="small" onClick={() => console.log("중복확인")}>
-              중복확인
-            </CommonButton>
+          {/* 아이디 */}
+          <div>
+            <div className="flex items-end gap-2">
+              <CommonInput
+                id="userId"
+                label="아이디"
+                placeholder="아이디를 입력해주세요"
+                {...register("userId")}
+                inputSize="smallButton"
+              />
+
+              <CommonButton
+                size="small"
+                type="button"
+                onClick={() => console.log("중복확인")}
+              >
+                중복확인
+              </CommonButton>
+            </div>
+            {errors.userId && (
+              <p className="text-warning text-sm mt-1">
+                {errors.userId.message}
+              </p>
+            )}
           </div>
 
-          <CommonInput
-            id="password"
-            label="비밀번호"
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            {...register("password", { required: "PASSWORD is required" })}
-          />
-          <CommonInput
-            id="passwordCheck"
-            label="비밀번호 확인"
-            type="password"
-            placeholder="비밀번호를 한 번 더 입력해주세요"
-            {...register("passwordCheck", {
-              required: "passwordCheck is required",
-            })}
-          />
-          <CommonInput
-            id="nickname"
-            label="닉네임"
-            placeholder="닉네임을 입력해주세요"
-            {...register("nickname", { required: "nickname is required" })}
-          />
-          <div className="flex items-end gap-2">
+          {/* 비밀번호 */}
+          <div>
             <CommonInput
-              id="hp"
-              label="전화번호"
-              placeholder="-제외 11자리를 입력해주세요"
-              {...register("hp", { required: "hp is required" })}
+              id="password"
+              label="비밀번호"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              {...register("password")}
             />
-            <CommonButton size="small">인증번호</CommonButton>
+            {errors.password && (
+              <p className="text-warning text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
-          <CommonInput
-            id="email"
-            label="이메일"
-            type="email"
-            placeholder="이메일을 입력해주세요"
-            {...register("email", { required: "email is required" })}
-          />
-          <div className="flex items-end gap-2">
+          <div>
             <CommonInput
-              id="zipcode"
-              label="우편번호"
-              placeholder="우편번호를 입력해주세요"
-              {...register("zipcode", { required: "zipcode is required" })}
+              id="passwordCheck"
+              label="비밀번호 확인"
+              type="password"
+              placeholder="비밀번호를 한 번 더 입력해주세요"
+              {...register("passwordCheck")}
             />
-            <CommonButton size="small">찾기</CommonButton>
+            {errors.passwordCheck && (
+              <p className="text-warning text-sm mt-1">
+                {errors.passwordCheck.message}
+              </p>
+            )}
           </div>
-          <CommonInput
-            id="address"
-            placeholder="주소를 입력해주세요"
-            {...register("address", { required: "address is required" })}
-          />
-          <CommonInput
-            id="addressDetail"
-            placeholder="상세주소를 입력해주세요"
-            {...register("addressDetail", {
-              required: "addressDetail is required",
-            })}
-          />
+
+          {/* 닉네임 */}
+          <div>
+            <CommonInput
+              id="nickname"
+              label="닉네임"
+              placeholder="닉네임을 입력해주세요"
+              {...register("nickname")}
+            />
+            {errors.nickname && (
+              <p className="text-warning text-sm mt-1">
+                {errors.nickname.message}
+              </p>
+            )}
+          </div>
+
+          {/* 전화번호 */}
+          <div>
+            <div className="flex items-end gap-2">
+              <CommonInput
+                id="hp"
+                label="전화번호"
+                placeholder="-제외 11자리를 입력해주세요"
+                {...register("hp")}
+              />
+              <CommonButton
+                size="small"
+                type="button"
+                onClick={() => console.log("인증번호")}
+              >
+                인증번호
+              </CommonButton>
+            </div>
+            {errors.hp && (
+              <p className="text-warning text-sm mt-1">{errors.hp.message}</p>
+            )}
+          </div>
+
+          {/* 이메일 */}
+          <div>
+            <CommonInput
+              id="email"
+              label="이메일"
+              type="email"
+              placeholder="이메일을 입력해주세요"
+              {...register("email")}
+            />
+            {errors.email && (
+              <p className="text-warning text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
+          {/* 주소 */}
+          <div className="flex flex-col gap-5">
+            <div>
+              <div className="flex items-end gap-2">
+                <CommonInput
+                  id="zipcode"
+                  label="우편번호"
+                  placeholder="우편번호를 입력해주세요"
+                  {...register("zipcode")}
+                />
+                <CommonButton
+                  size="small"
+                  type="button"
+                  onClick={() => console.log("우편번호 찾기")}
+                >
+                  찾기
+                </CommonButton>
+              </div>
+              {errors.zipcode && (
+                <p className="text-warning text-sm mt-1">
+                  {errors.zipcode.message}
+                </p>
+              )}
+            </div>
+
+            <CommonInput
+              id="address"
+              placeholder="주소를 입력해주세요"
+              {...register("address")}
+            />
+            <div>
+              <CommonInput
+                id="addressDetail"
+                placeholder="상세주소를 입력해주세요"
+                {...register("addressDetail")}
+              />
+              {errors.addressDetail && (
+                <p className="text-warning text-sm mt-1">
+                  {errors.addressDetail.message}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
         <CommonButton type="submit">다음으로</CommonButton>
       </form>
