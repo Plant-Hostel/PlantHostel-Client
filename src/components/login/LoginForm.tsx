@@ -26,19 +26,25 @@ export default function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setError,
   } = useForm<FormValues>();
 
   const [saveId, setSaveId] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  console.log("isPasswordVisible", isPasswordVisible);
+  const userId = watch("userId");
+  const password = watch("password");
 
   const onSubmit = async (data: FormValues) => {
     const result = await handleLogin(data.userId, data.password);
     if (result.status === 200) {
       router.push("/");
-    } else {
-      alert(result.message);
+    } else if (result.status === 401) {
+      setError("password", {
+        type: "server",
+        message: "비밀번호가 올바르지 않습니다.", //추후에 상태값 분기 처리
+      });
     }
   };
 
@@ -55,10 +61,15 @@ export default function LoginForm() {
                 id="userId"
                 label="아이디"
                 placeholder="아이디를 입력해주세요"
-                {...register("userId", { required: "ID is required" })}
+                color={errors.password && "warning"}
+                {...register("userId", {
+                  required: "아이디를 입력해 주세요",
+                })}
               />
               {errors.userId && (
-                <p className="text-warning text-sm">{errors.userId.message}</p>
+                <p className="text-warning text-[15px] mt-1">
+                  {errors.userId.message}
+                </p>
               )}
             </div>
             <div>
@@ -67,7 +78,10 @@ export default function LoginForm() {
                 label="비밀번호"
                 type={isPasswordVisible ? "text" : "password"}
                 placeholder="비밀번호를 입력해주세요"
-                {...register("password", { required: "PASSWORD is required" })}
+                color={errors.password && "warning"}
+                {...register("password", {
+                  required: "비밀번호를 입력해 주세요",
+                })}
                 icon={
                   <button
                     className="flex justify-center items-center"
@@ -79,7 +93,7 @@ export default function LoginForm() {
                 }
               />
               {errors.password && (
-                <p className="text-warning text-sm">
+                <p className="text-warning text-[15px] mt-1">
                   {errors.password.message}
                 </p>
               )}
@@ -109,8 +123,14 @@ export default function LoginForm() {
           </CommonButton>
         </div>
         <div>
-          <CommonButton type="submit">로그인</CommonButton>
-          <Link href={"/"} className="block text-center py-3 text-[13px]">
+          <CommonButton
+            type="submit"
+            disabled={!userId || !password}
+            color={!userId || !password ? "disabled" : "primary"}
+          >
+            로그인
+          </CommonButton>
+          <Link href={"/join"} className="block text-center py-3 text-[13px]">
             아직 회원이 아니신가요?
             <span className="text-primary"> 회원가입</span>
           </Link>
