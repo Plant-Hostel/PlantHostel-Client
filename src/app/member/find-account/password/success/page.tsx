@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "@/images/MainLogo.svg";
 import CommonButton from "@/components/common/CommonButton";
 
-export default function page() {
+export default function Page() {
   return (
     <div className="flex flex-col justify-between items-center min-h-screen pt-[100px]">
       <Logo />

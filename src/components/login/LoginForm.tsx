@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import CommonButton from "../common/CommonButton";
 import CommonInput from "../common/CommonInput";
-import Show from "@/images/Show.svg";
+import Show from "@/images/login/PwdShow.svg";
+import Hide from "@/images/login/PwdHide.svg";
 import CommonCheckbox from "../common/CommonCheckbox";
 import Kakao from "@/images/login/kakao.svg";
 import Naver from "@/images/login/naver.svg";
@@ -28,8 +29,9 @@ export default function LoginForm() {
   } = useForm<FormValues>();
 
   const [saveId, setSaveId] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  console.log("saveId", saveId);
+  console.log("isPasswordVisible", isPasswordVisible);
 
   const onSubmit = async (data: FormValues) => {
     const result = await handleLogin(data.userId, data.password);
@@ -63,17 +65,16 @@ export default function LoginForm() {
               <CommonInput
                 id="password"
                 label="비밀번호"
-                type="password"
+                type={isPasswordVisible ? "text" : "password"}
                 placeholder="비밀번호를 입력해주세요"
                 {...register("password", { required: "PASSWORD is required" })}
                 icon={
                   <button
                     className="flex justify-center items-center"
-                    onClick={() => {
-                      console.log("비밀번호 감추기"); //추후에 구현
-                    }}
+                    type="button"
+                    onClick={() => setIsPasswordVisible((prev) => !prev)} //비밀번호 감추기
                   >
-                    <Show />
+                    {isPasswordVisible ? <Show /> : <Hide />}
                   </button>
                 }
               />
@@ -96,7 +97,6 @@ export default function LoginForm() {
             <Link href={"/"}>아이디/비밀번호 &gt;</Link>
           </div>
         </div>
-
         <div className="flex flex-col gap-2 py-6">
           <CommonButton color="social" textcolor="sub02" className="flex gap-2">
             <Kakao /> 카카오 로그인
@@ -108,7 +108,6 @@ export default function LoginForm() {
             <Google /> 구글 로그인
           </CommonButton>
         </div>
-
         <div>
           <CommonButton type="submit">로그인</CommonButton>
           <Link href={"/"} className="block text-center py-3 text-[13px]">

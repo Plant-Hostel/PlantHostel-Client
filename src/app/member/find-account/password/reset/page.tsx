@@ -2,7 +2,7 @@
 
 import CommonInput from "@/components/common/CommonInput";
 import React, { useState } from "react";
-import Hide from "@/images/Hide.svg";
+import Hide from "@/images/login/PwdHide.svg";
 import CommonButton from "@/components/common/CommonButton";
 
 export default function Page() {
