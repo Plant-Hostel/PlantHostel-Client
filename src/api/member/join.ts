@@ -1,7 +1,7 @@
-import { Member } from "@/types/member";
+import { MemberSchemaType } from "@/types/member";
 
 //회원가입
-export const handleJoin = async (memberData: Member) => {
+export const handleJoin = async (memberData: MemberSchemaType) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_SERVER_URL}/members/join`,
