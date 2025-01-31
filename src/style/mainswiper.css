@@ -1,0 +1,6 @@
+.mainswiper .swiper-pagination-bullet {
+  @apply bg-white opacity-100;
+}
+.mainswiper .swiper-pagination-bullet-active {
+  @apply bg-pal02 w-4 h-2 rounded-[20px];
+}
