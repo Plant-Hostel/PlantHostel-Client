@@ -1,17 +1,16 @@
 "use client";
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import ExistPlantSlide from "./ExistPlantSlide";
+import StoreItems from "./StoreItems";
 
-export default function ExistPlant() {
-  //반려식물 등록 후
+export default function StoreSlide() {
   return (
-    <div className="mb-5">
+    <div>
       <Swiper
         slidesPerView={1}
         loop={false}
@@ -19,16 +18,15 @@ export default function ExistPlant() {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mainswiper"
       >
         <SwiperSlide>
-          <ExistPlantSlide />
+          <StoreItems />
         </SwiperSlide>
         <SwiperSlide>
-          <ExistPlantSlide />
+          <StoreItems />
         </SwiperSlide>
         <SwiperSlide>
-          <ExistPlantSlide />
+          <StoreItems />
         </SwiperSlide>
       </Swiper>
     </div>

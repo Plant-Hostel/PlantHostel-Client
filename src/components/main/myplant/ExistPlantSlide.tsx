@@ -2,10 +2,10 @@ import Image from "next/image";
 import React from "react";
 import PlantImg from "@/images/main/PlantImg.png";
 import PlantBadge from "./PlantBadge";
-import Watering from "@/images/main/watering.svg";
-import Watch from "@/images/main/watch.svg";
-import WaterDrop from "@/images/main/waterdrop.svg";
-import Electric from "@/images/main/electric.svg";
+import Watering from "@/images/main/Watering.svg";
+import Watch from "@/images/main/Watch.svg";
+import WaterDrop from "@/images/main/Waterdrop.svg";
+import Electric from "@/images/main/Electric.svg";
 import Temperature from "@/images/main/Temperature.svg";
 
 export default function ExistPlantSlide() {

@@ -1,14 +1,17 @@
 import React from "react";
-import MainTitle from "../MainTitle";
 import NonExistPlant from "./NonExistPlant";
 import ExistPlant from "./ExistPlant";
+import CategorySection from "./category/CategorySection";
+
+const IsExistPlant = true;
 
 export default function MyPlant() {
   return (
     <div>
-      <MainTitle title="나의 반려식물" className="mb-3" />
-      {/* <NonExistPlant /> */}
-      <ExistPlant />
+      <div className="mb-3 text-xl">나의 반려식물</div>
+      {IsExistPlant ? <ExistPlant /> : <NonExistPlant />}
+      <CategorySection />
+      <div className="-mx-5 h-3 bg-[#E5E5E5] mt-8 mb-10"></div>
     </div>
   );
 }
