@@ -10,7 +10,7 @@ export default function MethodPhone({ type }: { type: "id" | "pwd" }) {
         <span className="font-PretendardSemibold">
           등록된 휴대번화 번호로 찾기
         </span>
-        <span className="text-[14px]">
+        <span className="text-sm">
           가입 당시 입력한 휴대전화 번호를 통해 인증해주세요
         </span>
       </div>

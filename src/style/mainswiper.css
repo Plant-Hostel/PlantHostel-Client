@@ -1,3 +1,7 @@
+.mainswiper {
+  @apply rounded-md;
+}
+
 .mainswiper .swiper-pagination-bullet {
   @apply bg-white opacity-100;
 }

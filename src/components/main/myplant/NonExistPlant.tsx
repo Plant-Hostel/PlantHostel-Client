@@ -11,7 +11,7 @@ export default function NonExistPlant() {
           아직 등록된 반려식물이 없어요
         </span>
         <br />
-        <span className="text-[14px] ">반려식물 등록하러 가기</span>
+        <span className="text-sm">반려식물 등록하러 가기</span>
       </div>
       <Link href={"/"}>
         <ArrowRight />

@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React, { ButtonHTMLAttributes } from "react";
 
 const ButtonVariants = cva(
-  "rounded-[6px] h-[52px] flex items-center justify-center text-[14px]",
+  "rounded-[6px] h-[52px] flex items-center justify-center text-sm",
   {
     variants: {
       size: {
