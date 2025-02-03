@@ -8,7 +8,7 @@ export default function MethodEmail({ type }: { type: "id" | "pwd" }) {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col">
         <span className="font-PretendardSemibold">이메일로 찾기</span>
-        <span className="text-[14px]">
+        <span className="text-sm">
           가입 당시 입력한 이메일을 통해 인증해주세요
         </span>
       </div>

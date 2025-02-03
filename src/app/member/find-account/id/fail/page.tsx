@@ -12,7 +12,7 @@ export default function Page() {
       <div className="flex flex-col gap-6 items-center mt-6">
         <div className="flex flex-col items-center">
           <span>일치하는 정보가 없습니다</span>
-          <span className="text-[14px]">회원가입 후 이용이 가능합니다</span>
+          <span className="text-sm">회원가입 후 이용이 가능합니다</span>
         </div>
       </div>
       <CommonButton
